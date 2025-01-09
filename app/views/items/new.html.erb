@@ -1,0 +1,16 @@
+<h1>Adicionar Item à Lista: <%= @list.name %></h1>
+
+<%= form_with(model: [@list, @item], local: true) do |form| %>
+  <div>
+    <%= form.label :content, "Descrição do Item" %>
+    <%= form.text_field :content, class: "border rounded px-2 py-1" %>
+  </div>
+
+  <div class="mt-4">
+    <%= form.submit "Adicionar Item", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  </div>
+<% end %>
+
+<div class="mt-4">
+  <%= link_to "Voltar", list_items_path(@list), class: "text-blue-500 underline" %>
+</div>
