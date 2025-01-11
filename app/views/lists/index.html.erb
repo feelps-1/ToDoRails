@@ -1,29 +1,32 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <div class="flex flex-col items-center justify-center w-full">
-
   <div class="flex flex-col items-center gap-3 md:w-8/12 w-full">
     <h1 class="text-2xl">Todo List</h1>
     <div class="w-11/12 md:w-full h-[500px] overflow-y-auto flex flex-col items-center">
-      <% @todos.each do |list| %>
-      <div class="flex items-center justify-between w-full p-5 bg-slate-200 border-b border-slate-600 hover:bg-slate-300">
-        <%= link_to list_items_path(list), class: "block w-full h-full" do %>
-          <%= list.name %>
-        <% end %>
-        <%= button_to list_path(list), method: :delete, class: "bg-transparent items-center" do %>
-          <i class="fas fa-trash text-red-600 hover:text-red-800"></i>
-        <% end %>
-      </div>
-      <% end %>
-        <%= form_with(model: List.new, class: "w-full", local: false, data: { turbo: false }) do |form| %>
+      <% if @lists.present? %>
+        <% @lists.each do |list| %>
           <div class="flex items-center justify-between w-full p-5 bg-slate-200 border-b border-slate-600 hover:bg-slate-300">
-            <%= form.text_field :name, placeholder: "Nova lista", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-2/4" %>
-            <%= button_tag(type: "submit", class: "bg-transparent border-none cursor-pointer") do %>
-              <i class="fas fa-plus text-blue-600 text-2xl hover:text-blue-800"></i>
+            <%= link_to list_items_path(list), class: "block w-full h-full" do %>
+              <%= list.name %>
+            <% end %>
+            <%= button_to list_path(list), method: :delete, class: "bg-transparent items-center" do %>
+              <i class="fas fa-trash text-red-600 hover:text-red-800"></i>
             <% end %>
           </div>
         <% end %>
+      <% else %>
+        <p>Você ainda não tem listas criadas.</p>
+      <% end %>
+
+      <%= form_with(model: List.new, class: "w-full", local: false, data: { turbo: false }) do |form| %>
+        <div class="flex items-center justify-between w-full p-5 bg-slate-200 border-b border-slate-600 hover:bg-slate-300">
+          <%= form.text_field :name, placeholder: "Nova lista", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-2/4" %>
+          <%= button_tag(type: "submit", class: "bg-transparent border-none cursor-pointer") do %>
+            <i class="fas fa-plus text-blue-600 text-2xl hover:text-blue-800"></i>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
-
 </div>
