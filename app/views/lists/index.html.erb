@@ -17,7 +17,7 @@
       <% end %>
         <%= form_with(model: List.new, class: "w-full", local: false, data: { turbo: false }) do |form| %>
           <div class="flex items-center justify-between w-full p-5 bg-slate-200 border-b border-slate-600 hover:bg-slate-300">
-            <%= form.text_field :name, placeholder: "New list", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-2/4" %>
+            <%= form.text_field :name, placeholder: "Nova lista", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-2/4" %>
             <%= button_tag(type: "submit", class: "bg-transparent border-none cursor-pointer") do %>
               <i class="fas fa-plus text-blue-600 text-2xl hover:text-blue-800"></i>
             <% end %>
