@@ -1,0 +1,17 @@
+let newRow = `
+  <div class="bg-slate-200 flex flex-col md:flex-row items-center p-5 cursor-pointer hover:bg-slate-300 h-full text-wrap w-full border-b border-slate-600">
+    <a href="/lists/<%= @list.id %>/items" class="block w-full h-full px-3 py-4">
+      <%= @list.name %>
+    </a>
+    <form action="/lists/<%= @list.id %>" method="post" data-remote="true">
+      <input type="hidden" name="_method" value="delete" />
+      <button type="submit" class="bg-transparent items-center">
+        <i class="fas fa-trash"></i>
+      </button>
+    </form>
+  </div>
+`;
+
+document.querySelector('.w-11/12').insertAdjacentHTML('beforeend', newRow);
+
+document.querySelector('#list_name').value = '';

@@ -4,6 +4,8 @@
   <div>
     <%= form.label :content, "Descrição do Item" %>
     <%= form.text_field :content, class: "border rounded px-2 py-1" %>
+    <%= form.label :status %>
+    <%= form.select :status, Item.statuses.keys.map { |status| [status.humanize, status] }, {}, class: "form-control" %>
   </div>
 
   <div class="mt-4">

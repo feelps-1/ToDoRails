@@ -1,24 +1,24 @@
 <h1>Itens da Lista: <%= @list.name %></h1>
 
-<table class="w-3/5 mt-10 border-separate table-auto text-slate-500">
+<table class="w-full mt-10 border-separate table-auto text-slate-500">
   <thead>
     <tr>
-      <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">ID</th>
-      <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Descrição</th>
+      <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Item</th>
+      <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Status</th>
       <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Ação</th>
     </tr>
   </thead>
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
-          <%= item.id %>
+        <td class="px-3 py-4 text-sm font-normal text-gray-600 bg-gray-50"><%= item.name %></td>
+        
+        <td class="px-3 py-4 text-sm font-normal text-gray-600 bg-gray-50">
+          <%= item.status.humanize %>
         </td>
-        <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
-          <%= item.content %>
-        </td>
-        <td class="px-3 py-4 text-sm font-normal text-left text-red-600 underline bg-gray-50">
-          <%= button_to "Deletar", list_item_path(@list, item), method: :delete %>
+
+        <td class="px-3 py-4 text-sm font-normal text-gray-600 bg-gray-50">
+          <%= button_to "Deletar", list_item_path(item.list, item), method: :delete, class: "bg-red-500 text-white px-3 py-2 rounded" %>
         </td>
       </tr>
     <% end %>
