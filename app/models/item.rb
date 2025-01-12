@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   enum :status, { a_fazer: 0, em_andamento: 1, terminado: 2 }
 
   validates :status, presence: true
+  validates :content, presence: true
 
   after_initialize :set_default_status, if: :new_record?
 
