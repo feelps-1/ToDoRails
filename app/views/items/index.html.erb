@@ -1,18 +1,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <div class="flex flex-col items-center justify-center w-full">
+  <% if user_signed_in? %>
+    <div class="flex justify-between w-full mb-4 px-4">
+      <p class="text-green-600 font-semibold">Bem-vindo, <%= current_user.email %>!</p>
+      <%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
+    </div>
+  <% end %>
+
   <div class="flex gap-4 mb-4">
      <%= link_to "Todos", list_items_path(@list), 
       class: "px-4 py-2 rounded text-white #{params[:status].nil? ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-600'}" %>
 
-  <%= link_to "A Fazer", list_items_path(@list, status: "to_do"), 
-      class: "px-4 py-2 rounded text-white #{params[:status] == 'to_do' ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-600'}" %>
+  <%= link_to "A fazer", list_items_path(@list, status: "a_fazer"), 
+      class: "px-4 py-2 rounded text-white #{params[:status] == 'a_fazer' ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-600'}" %>
 
-  <%= link_to "Em Progresso", list_items_path(@list, status: "in_progress"), 
-      class: "px-4 py-2 rounded text-white #{params[:status] == 'in_progress' ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-600'}" %>
+  <%= link_to "Em andamento", list_items_path(@list, status: "em_andamento"), 
+      class: "px-4 py-2 rounded text-white #{params[:status] == 'em_andamento' ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-600'}" %>
 
-  <%= link_to "Concluídos", list_items_path(@list, status: "done"), 
-      class: "px-4 py-2 rounded text-white #{params[:status] == 'done' ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-600'}" %>
+  <%= link_to "Terminados", list_items_path(@list, status: "terminado"), 
+      class: "px-4 py-2 rounded text-white #{params[:status] == 'terminado' ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-600'}" %>
   </div>  
 
   <div class="flex flex-col items-center gap-3 md:w-8/12 w-full">
@@ -29,7 +36,7 @@
       <div class="flex  gap-3 items-center justify-between w-full p-5 bg-slate-200 border-b border-slate-600 hover:bg-slate-300">
         
         <!-- Exibição do nome do item -->
-        <div class="flex-1">
+        <div class="flex-1 text-wrap break-words whitespace-normal max-w-full w-full">
           <%= item.content %>
         </div>
 

@@ -1,13 +1,13 @@
 class Item < ApplicationRecord
   belongs_to :list
   
-  enum :status, { to_do: 0, in_progress: 1, done: 2 }
+  enum :status, { a_fazer: 0, em_andamento: 1, terminado: 2 }
 
   validates :status, presence: true
 
   after_initialize :set_default_status, if: :new_record?
 
   def set_default_status
-    self.status ||= :to_do
+    self.status ||= :a_fazer
   end
 end

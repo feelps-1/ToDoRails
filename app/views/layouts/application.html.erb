@@ -25,17 +25,15 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      
+
       <%= yield %>
-      
-      <% if user_signed_in? %>
-        <p>Bem-vindo, <%= current_user.email %>!</p>
-        <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-link" %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
+    
+      <%# <% if user_signed_in? %> 
+        <%# <p>Bem-vindo, <%= current_user.email!</p>  %>
+        <%# <%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "logout-link" %> 
+      <%# <% else %> 
+        <%# <%= link_to "Login", new_user_session_path %> 
+      <%# <% end %> 
     </main>
   </body>
 </html>
