@@ -42,7 +42,7 @@ gem "thruster", require: false
 
 gem 'factory_bot_rails'
 gem 'database_cleaner-active_record'
-gem 'shoulda-matchers', '~> 5.0'
+gem 'shoulda-matchers', '~> 6.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
